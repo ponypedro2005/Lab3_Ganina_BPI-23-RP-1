@@ -12,7 +12,7 @@ const GET_URL = 'https://jsonplaceholder.typicode.com/posts?_limit=5';
 // Если захотите проверить 404, раскомментируйте строку ниже, а верхнюю закомментируйте
 // const GET_URL = 'https://jsonplaceholder.typicode.com/postz'; 
 
-const POST_URL = 'https://jsonplaceholder.typicode.com/posts'; // Внимание: здесь posts, а не postz!
+const POST_URL = 'https://jsonplaceholder.typicode.com/posts';
 
 // Функция для отображения сообщений о статусе
 function showStatus(message, type) {
