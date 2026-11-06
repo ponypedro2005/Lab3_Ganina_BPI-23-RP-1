@@ -8,7 +8,7 @@ const bodyInput = document.getElementById('body');
 const statusMessage = document.getElementById('status-message');
 
 // Адреса API
-const GET_URL = 'https://jsonplaceholder.typicode.com/postаs';
+const GET_URL = 'https://jsonplaceholder.typicode.com/posts';
 // ошибка 404 для обработки удалить предыдущую строку
 //const GET_URL = 'https://jsonplaceholder.typicode.com/postаz';
 const POST_URL = 'https://jsonplaceholder.typicode.com/posts';
