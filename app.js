@@ -59,7 +59,7 @@ loadBtn.addEventListener('click', async () => {
         const response = await fetch(GET_URL);
 
         if (!response.ok) {
-            throw new Error(`404 Not Found`);
+            throw new Error(`HTTP ${response.status}`);
         }
 
         const data = await response.json();
@@ -74,7 +74,12 @@ loadBtn.addEventListener('click', async () => {
 
     } catch (error) {
         // ОШИБКА: 404 Not Found
-        showStatus('Ошибка! HTTP-код: 404 Not Found. Неверный адрес или нет сети.', 'error');
+        showStatus(
+            error.message.startWith('HTTP')
+            ? `Ошибка! ${error.message}. Не удалось загрузить публикации.`
+            : 'Ошибка сети! Не удалось связаться с сервером.',
+            'error'
+            );
     } finally {
         loadBtn.disabled = false;
     }
@@ -133,7 +138,12 @@ form.addEventListener('submit', async (event) => {
         form.reset();
 
     } catch (error) {
-        showStatus('Ошибка сервера или сети (Код 500)', 'error');
+    showStatus(
+        error.message.startsWith('HTTP')
+            ? `Ошибка сервера! ${error.message}`
+            : 'Ошибка сети! Не удалось отправить публикацию.',
+        'error'
+    );
     } finally {
         submitBtn.disabled = false;
     }
