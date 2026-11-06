@@ -9,9 +9,10 @@ const statusMessage = document.getElementById('status-message');
 
 // Адреса API
 const GET_URL = 'https://jsonplaceholder.typicode.com/posts?_limit=5';
-// ошибка 404 для обработки удалить предыдущую строку
-//const GET_URL = 'https://jsonplaceholder.typicode.com/postz';
-const POST_URL = 'https://jsonplaceholder.typicode.com/posts';
+// Если захотите проверить 404, раскомментируйте строку ниже, а верхнюю закомментируйте
+// const GET_URL = 'https://jsonplaceholder.typicode.com/postz'; 
+
+const POST_URL = 'https://jsonplaceholder.typicode.com/posts'; // Внимание: здесь posts, а не postz!
 
 // Функция для отображения сообщений о статусе
 function showStatus(message, type) {
@@ -57,7 +58,6 @@ loadBtn.addEventListener('click', async () => {
     try {
         const response = await fetch(GET_URL);
 
-        // Если сервер вернул 404 (например, если поменять URL на postz)
         if (!response.ok) {
             throw new Error(`404 Not Found`);
         }
@@ -91,19 +91,14 @@ form.addEventListener('submit', async (event) => {
 
     // --- ВАЛИДАЦИЯ И ЭМУЛЯЦИЯ 400 BAD REQUEST ---
     if (!title || !body) {
-        // Если поля пустые, мы НЕ отправляем запрос на сервер.
-        // Мы принудительно показываем ошибку 400 Bad Request, 
-        // так как это ошибка со стороны клиента (пользователя).
         showStatus('Ошибка! HTTP-код: 400 Bad Request. Заголовок и текст не могут быть пустыми!', 'error');
         
-        // Опционально: можно добавить красную рамку полям, чтобы было нагляднее
         titleInput.style.borderColor = title ? '#ccc' : 'red';
         bodyInput.style.borderColor = body ? '#ccc' : 'red';
         
-        return; // Прерываем функцию, запрос не отправляется
+        return; 
     }
 
-    // Если всё ок, убираем красные рамки
     titleInput.style.borderColor = '#ccc';
     bodyInput.style.borderColor = '#ccc';
 
@@ -132,14 +127,12 @@ form.addEventListener('submit', async (event) => {
         // УСПЕХ: 201 Created
         showStatus(`Успех! HTTP-код: 201 Created. Создан пост с ID: ${data.id}`, 'success');
 
-        // Добавляем пост в начало списка
         const newPostElement = createPostElement(data.title, data.body, data.id);
         postsList.prepend(newPostElement);
 
         form.reset();
 
     } catch (error) {
-        // Ошибка сервера или сети
         showStatus('Ошибка сервера или сети (Код 500)', 'error');
     } finally {
         submitBtn.disabled = false;
