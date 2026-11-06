@@ -11,7 +11,7 @@ const statusMessage = document.getElementById('status-message');
 const GET_URL = 'https://jsonplaceholder.typicode.com/posts?_limit=5';
 // ошибка 404 для обработки удалить предыдущую строку
 //const GET_URL = 'https://jsonplaceholder.typicode.com/postz';
-const POST_URL = 'https://jsonplaceholder.typicode.com/postz';
+const POST_URL = 'https://jsonplaceholder.typicode.com/posts';
 
 // Функция для отображения сообщений о статусе
 function showStatus(message, type) {
