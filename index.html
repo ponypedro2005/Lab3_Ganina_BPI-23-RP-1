@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доска публикаций</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Доска публикаций</h1>
+
+        <!-- Область сообщений (загрузка, успех, ошибки) -->
+        <div id="status-message" class="status hidden"></div>
+
+        <!-- Блок загрузки публикаций (GET) -->
+        <section class="actions">
+            <button id="load-btn">Загрузить публикации</button>
+        </section>
+
+        <!-- Список публикаций -->
+        <section id="posts-list" class="posts-container">
+            <!-- Сюда будут добавляться посты через DOM -->
+        </section>
+
+        <hr>
+
+        <!-- Форма создания публикации (POST) -->
+        <section class="create-post">
+            <h2>Создать новую публикацию</h2>
+            <form id="post-form">
+                <div class="form-group">
+                    <label for="title">Заголовок:</label>
+                    <input type="text" id="title" name="title" placeholder="Введите заголовок...">
+                </div>
+                <div class="form-group">
+                    <label for="body">Текст:</label>
+                    <textarea id="body" name="body" rows="4" placeholder="Введите текст публикации..."></textarea>
+                </div>
+                <button type="submit" id="submit-btn">Создать публикацию</button>
+            </form>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
