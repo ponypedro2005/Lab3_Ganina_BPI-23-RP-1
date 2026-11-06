@@ -8,10 +8,10 @@ const bodyInput = document.getElementById('body');
 const statusMessage = document.getElementById('status-message');
 
 // Адреса API
-const GET_URL = 'https://jsonplaceholder.typicode.com/posts';
+const GET_URL = 'https://jsonplaceholder.typicode.com/posts?_limit=5';
 // ошибка 404 для обработки удалить предыдущую строку
 //const GET_URL = 'https://jsonplaceholder.typicode.com/postаz';
-const POST_URL = 'https://jsonplaceholder.typicode.com/posts';
+const POST_URL = 'https://jsonplaceholder.typicode.com/postz';
 
 // Функция для отображения сообщений о статусе
 function showStatus(message, type) {
